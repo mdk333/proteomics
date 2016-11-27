@@ -16,6 +16,7 @@ import org.xml.sax.SAXException;
 
 /**
  * This class does the following: 
+ * 
  * (a.) Loads the peptides from the given mzIdentML
  * file into a hash map. The key of the hash map is the Peptide Ref, which can 
  * be used (as seen in the mzIdentML files) to refer to same
