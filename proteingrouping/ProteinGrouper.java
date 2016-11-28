@@ -80,18 +80,19 @@ public class ProteinGrouper {
     }
     
     private void updateAllPeptideStatus(ConcurrentHashMap<Integer, ProteinGroup> groupHashMap) {
-        for(ProteinGroup proteinGroup : groupHashMap.values()) {
-            for(ProteinGroup pGroup : groupHashMap.values()) {
-                if(proteinGroup == pGroup) continue;
+        groupHashMap.values().stream().forEach((proteinGroup) -> {
+            groupHashMap.values().stream().filter((pGroup) -> !(proteinGroup == pGroup)).map((pGroup) -> {
                 //else
                 //Check if the two groups have any peptides in common, and mark those peptides as conflicted
                 ArrayList<Peptide> commonPeptides = new ArrayList<>(proteinGroup.getGroupPeptideDomain());
                 commonPeptides.retainAll(pGroup.getGroupPeptideDomain());
-                for(Peptide peptide : commonPeptides) {
+                return commonPeptides;
+            }).forEach((commonPeptides) -> {
+                commonPeptides.stream().forEach((peptide) -> {
                     peptide.peptideStatus = Peptide.Status.CONFLICTED;
-                }
-            }
-        }
+                });
+            });
+        });
         
     }
     
