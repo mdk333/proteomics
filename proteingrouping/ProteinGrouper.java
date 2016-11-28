@@ -61,7 +61,7 @@ public class ProteinGrouper {
                     // So we add this protein to the group
                     pg.addToProteins(protein);
                     protein.setProteinGroup(pg);
-                    if(pg.getGroupPeptideDomain().size() > protein.getObservedPeptides().size()) {
+                    if (pg.getGroupPeptideDomain().size() > protein.getObservedPeptides().size()) {
                         //the protein is a subset protein so we flag it as such
                         protein.subsetProtein(true);
                     }
@@ -78,7 +78,7 @@ public class ProteinGrouper {
         updateAllPeptideStatus(groupHashMap);
         return groupHashMap;
     }
-    
+
     private void updateAllPeptideStatus(ConcurrentHashMap<Integer, ProteinGroup> groupHashMap) {
         groupHashMap.values().stream().forEach((proteinGroup) -> {
             groupHashMap.values().stream().filter((pGroup) -> !(proteinGroup == pGroup)).map((pGroup) -> {
@@ -93,18 +93,18 @@ public class ProteinGrouper {
                 });
             });
         });
-        
-    }
-    
-/*
-    public ConcurrentHashMap<Integer, ProteinGroupCluster> clusterProteinGroups(HashMap<Integer, ProteinGroup> proteinGroupHashMap) {
-
-        ConcurrentHashMap<Integer, ProteinGroupCluster> proteinGroupCluster = new ConcurrentHashMap<>();
-        ArrayList<Peptide> conflictedPeptides = new ArrayList<>();
-        for (ProteinGroup proteinGroup : proteinGroupHashMap.values()) {
-
-        }
 
     }
-*/
+
+    /*
+     public ConcurrentHashMap<Integer, ProteinGroupCluster> clusterProteinGroups(HashMap<Integer, ProteinGroup> proteinGroupHashMap) {
+
+     ConcurrentHashMap<Integer, ProteinGroupCluster> proteinGroupCluster = new ConcurrentHashMap<>();
+     ArrayList<Peptide> conflictedPeptides = new ArrayList<>();
+     for (ProteinGroup proteinGroup : proteinGroupHashMap.values()) {
+
+     }
+
+     }
+     */
 }
