@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package proteomics.proteingrouping;
 
 import java.util.concurrent.ConcurrentHashMap;
@@ -61,7 +57,7 @@ public class ProteinGrouper {
                     // So we add this protein to the group
                     pg.addToProteins(protein);
                     protein.setProteinGroup(pg);
-                    if(pg.getGroupPeptideDomain().size() > protein.getObservedPeptides().size()) {
+                    if (pg.getGroupPeptideDomain().size() > protein.getObservedPeptides().size()) {
                         //the protein is a subset protein so we flag it as such
                         protein.subsetProtein(true);
                     }
@@ -78,32 +74,33 @@ public class ProteinGrouper {
         updateAllPeptideStatus(groupHashMap);
         return groupHashMap;
     }
-    
+
     private void updateAllPeptideStatus(ConcurrentHashMap<Integer, ProteinGroup> groupHashMap) {
-        for(ProteinGroup proteinGroup : groupHashMap.values()) {
-            for(ProteinGroup pGroup : groupHashMap.values()) {
-                if(proteinGroup == pGroup) continue;
+        groupHashMap.values().stream().forEach((proteinGroup) -> {
+            groupHashMap.values().stream().filter((pGroup) -> !(proteinGroup == pGroup)).map((pGroup) -> {
                 //else
                 //Check if the two groups have any peptides in common, and mark those peptides as conflicted
                 ArrayList<Peptide> commonPeptides = new ArrayList<>(proteinGroup.getGroupPeptideDomain());
                 commonPeptides.retainAll(pGroup.getGroupPeptideDomain());
-                for(Peptide peptide : commonPeptides) {
+                return commonPeptides;
+            }).forEach((commonPeptides) -> {
+                commonPeptides.stream().forEach((peptide) -> {
                     peptide.peptideStatus = Peptide.Status.CONFLICTED;
-                }
-            }
-        }
-        
-    }
-    
-/*
-    public ConcurrentHashMap<Integer, ProteinGroupCluster> clusterProteinGroups(HashMap<Integer, ProteinGroup> proteinGroupHashMap) {
-
-        ConcurrentHashMap<Integer, ProteinGroupCluster> proteinGroupCluster = new ConcurrentHashMap<>();
-        ArrayList<Peptide> conflictedPeptides = new ArrayList<>();
-        for (ProteinGroup proteinGroup : proteinGroupHashMap.values()) {
-
-        }
+                });
+            });
+        });
 
     }
-*/
+
+    /*
+     public ConcurrentHashMap<Integer, ProteinGroupCluster> clusterProteinGroups(HashMap<Integer, ProteinGroup> proteinGroupHashMap) {
+
+     ConcurrentHashMap<Integer, ProteinGroupCluster> proteinGroupCluster = new ConcurrentHashMap<>();
+     ArrayList<Peptide> conflictedPeptides = new ArrayList<>();
+     for (ProteinGroup proteinGroup : proteinGroupHashMap.values()) {
+
+     }
+
+     }
+     */
 }
