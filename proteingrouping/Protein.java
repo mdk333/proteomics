@@ -1,11 +1,16 @@
+/**
+ *
+ * Copyright 2016-2017 Maduka Attamah
+ *
+ * @author Maduka Attamah
+ *
+ */
+
 package proteomics.proteingrouping;
 
 import java.util.ArrayList;
 
-/**
- *
- * @author Maduka Attamah
- */
+
 public class Protein {
 
     private final String dbSequenceRef;
