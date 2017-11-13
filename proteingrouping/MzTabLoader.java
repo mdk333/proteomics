@@ -1,3 +1,11 @@
+/**
+ * Copyright 2016-2017 Maduka Attamah
+ *
+ * Loads data from file into our working table
+ *
+ * @author Maduka Attamah
+ */
+
 package proteomics.proteingrouping;
 
 import java.io.File;
@@ -8,11 +16,7 @@ import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- * Loads data from file into our working table
- *
- * @author Maduka Attamah
- */
+
 public class MzTabLoader {
 
     File file;
