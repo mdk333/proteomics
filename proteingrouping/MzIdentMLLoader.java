@@ -1,3 +1,22 @@
+/**
+ * Copyright 2016-2017 Maduka Attamah
+ *
+ * This class does the following: 
+ * 
+ * (a.) Loads the peptides from the given mzIdentML
+ * file into a hash map. The key of the hash map is the Peptide Ref, which can 
+ * be used (as seen in the mzIdentML files) to refer to same
+ * peptides found in different "spectra". For the case where the same peptides are
+ * loaded from more than one "spectrum", only the peptide with the highest score
+ * is maintained in the entry corresponding to the peptide evidence ref. 
+ * 
+ * (b.) Loads the database proteins together with their associated peptides
+ * (identified by the peptide evidence ref) into a hash map. This hash map is
+ * used in tandem with the one from (a.)
+ *
+ * @author Maduka Attamah
+ */
+
 package proteomics.proteingrouping;
 
 import java.util.HashMap;
@@ -14,22 +33,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.Element;
 import org.xml.sax.SAXException;
 
-/**
- * This class does the following: 
- * 
- * (a.) Loads the peptides from the given mzIdentML
- * file into a hash map. The key of the hash map is the Peptide Ref, which can 
- * be used (as seen in the mzIdentML files) to refer to same
- * peptides found in different "spectra". For the case where the same peptides are
- * loaded from more than one "spectrum", only the peptide with the highest score
- * is maintained in the entry corresponding to the peptide evidence ref. 
- * 
- * (b.) Loads the database proteins together with their associated peptides
- * (identified by the peptide evidence ref) into a hash map. This hash map is
- * used in tandem with the one from (a.)
- *
- * @author Maduka Attamah
- */
+
 public class MzIdentMLLoader {
 
     private DocumentBuilderFactory dbFactory;
