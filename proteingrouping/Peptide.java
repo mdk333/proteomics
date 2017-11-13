@@ -1,7 +1,3 @@
-
-package proteomics.proteingrouping;
-
-
 /**
  *
  * Copyright 2016-2017 Maduka Attamah
@@ -10,6 +6,9 @@ package proteomics.proteingrouping;
  *
  * @author Maduka Attamah
  */
+
+package proteomics.proteingrouping;
+
 public class Peptide {
     private final String peptideRefSequence;
     private final String psmId;
