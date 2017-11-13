@@ -1,13 +1,16 @@
+/**
+ * Copyright 2016-2017 Maduka Attamah
+ *
+ * @author Maduka Attamah
+ *
+ */
 
 package proteomics.proteingrouping;
 
 import java.util.ArrayList;
 import java.util.HashSet;
 
-/**
- *
- * @author Maduka Attamah
- */
+
 public class ProteinGroupCluster {
 
     private static int id = -1;
