@@ -1,3 +1,11 @@
+/**
+ *
+ * Copyright 2016-2017 Maduka Attamah
+ *
+ * @author Maduka Attamah
+ *
+ */
+
 
 package proteomics.proteingrouping;
 
@@ -5,10 +13,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.HashMap;
 import java.util.ArrayList;
 
-/**
- *
- * @author Maduka Attamah
- */
+
 public class ProteinGrouper {
 
     public static final int PARALLELISM_THRESHOLD = 1; //Must execute in parallel
