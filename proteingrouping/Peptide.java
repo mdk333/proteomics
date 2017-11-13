@@ -3,7 +3,11 @@ package proteomics.proteingrouping;
 
 
 /**
+ *
+ * Copyright 2016-2017 Maduka Attamah
+ *
  * The Peptide class. Will be used to encapsulate data loaded from source files 
+ *
  * @author Maduka Attamah
  */
 public class Peptide {
